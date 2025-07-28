@@ -7,6 +7,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.SeleniumActions;
 
@@ -83,6 +85,7 @@ public class HomePageFlights {
 
     public void toCity() throws InterruptedException {
         homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
+        wait.until(ExpectedConditions.elementToBeClickable(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
         homePageFlightsObjects.getFirstCityFromDestinationCityDropdown().click();
     }
 
