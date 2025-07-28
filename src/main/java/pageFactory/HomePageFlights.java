@@ -46,6 +46,19 @@ public class HomePageFlights {
         } else {System.out.println("Flight button was already selected. No action taken.");}
     }
 
+    public void closeQRCodePopup(){
+        if(homePageFlightsObjects.getQRCodePopup().isDisplayed()){
+            try{
+                homePageFlightsObjects.getQRCodePopupClose().click();
+                System.out.println("QR Code pop-up closed");
+            } catch (Exception e){
+                throw new RuntimeException("Failed to close pop-up", e);
+            }
+        } else {
+            System.out.println("QR Code pop-up is not displayed");
+        }
+    }
+
     public void tripType(){
         homePageFlightsObjects.getSelectTripType().click();
         if(!homePageFlightsObjects.selectJourneyType("home_roundtrip").isSelected()){
@@ -59,12 +72,11 @@ public class HomePageFlights {
     }
 
     public void fromCity() throws InterruptedException {
-//        homePageFlightsObjects.getOriginCity().click();
-        Thread.sleep(8000);
-//        homePageFlightsObjects.getOriginCity().clear();
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].value = '';", homePageFlightsObjects.getOriginCity());
-        Thread.sleep(8000);
+        // To delete the pre-populated value
+        homePageFlightsObjects.getOriginCity().sendKeys(Keys.CONTROL + "a");
+        homePageFlightsObjects.getOriginCity().sendKeys(Keys.DELETE);
+        //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        //jsExecutor.executeScript("arguments[0].value = '';", homePageFlightsObjects.getOriginCity());
         homePageFlightsObjects.getOriginCity().sendKeys("Bengaluru");
         homePageFlightsObjects.getFirstCityFromOriginCityDropdown().click();
     }
@@ -79,11 +91,11 @@ public class HomePageFlights {
     }
 
     public void departDate(){
-        homePageFlightsObjects.selectDepartDate("2025-7-29");
+        homePageFlightsObjects.selectDepartDate("2025-8-10");
     }
 
     public void returnDate(){
-        homePageFlightsObjects.selectReturnDate("2025-8-11");
+        homePageFlightsObjects.selectReturnDate("2025-8-14");
     }
 
     public void applyDates(){

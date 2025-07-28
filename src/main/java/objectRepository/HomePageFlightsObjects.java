@@ -19,6 +19,14 @@ public class HomePageFlightsObjects {
     }
 
     @Getter
+    @FindBy(xpath = "//div[contains(@class, 'QRPopUp__PopUpContainer')]")
+    private WebElement QRCodePopup;
+
+    @Getter
+    @FindBy(xpath = "//div[contains(@class, 'QRPopUp__CloseButton')]")
+    private WebElement QRCodePopupClose;
+
+    @Getter
     @FindBy(xpath = "//p[normalize-space()='Flights']")
     private WebElement flightButton; //Verify isSelected, if not then select
 

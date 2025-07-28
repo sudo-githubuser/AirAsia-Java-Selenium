@@ -25,6 +25,7 @@ public class SearchFlight_ReturnJourney {
     @Given("User visits Air Asia website")
     public void userVisitsSkyscannerWebsite() {
         homePageFlights.launchUrl();
+        homePageFlights.closeQRCodePopup();
     }
 
     @And("Selects Flight")
