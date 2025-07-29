@@ -3,9 +3,7 @@ package pageFactory;
 import dataProvider.ConfigFileReader;
 import managers.FileReaderManager;
 import objectRepository.HomePageFlightsObjects;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -86,6 +84,7 @@ public class HomePageFlights {
     public void toCity() {
         homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
         wait.until(ExpectedConditions.elementToBeClickable(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
+        wait.until(ExpectedConditions.visibilityOf(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
         homePageFlightsObjects.getFirstCityFromDestinationCityDropdown().click();
     }
 
@@ -99,11 +98,15 @@ public class HomePageFlights {
     }
 
     public void departDate(){
-        homePageFlightsObjects.selectDepartDate("2025-8-10");
+        By departureDateLocator = homePageFlightsObjects.selectDepartDate("2025-8-10");
+        WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(departureDateLocator));
+        dateElement.click();
     }
 
     public void returnDate(){
-        homePageFlightsObjects.selectReturnDate("2025-8-14");
+        By returnDateLocator = homePageFlightsObjects.selectReturnDate("2025-8-14");
+        WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(returnDateLocator));
+        dateElement.click();
     }
 
     public void applyDates(){

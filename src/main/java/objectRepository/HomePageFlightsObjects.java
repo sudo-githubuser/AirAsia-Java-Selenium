@@ -88,10 +88,11 @@ public class HomePageFlightsObjects {
         //departMonthYear value should be 'August 2025', pick this from the departureDate, assert it in datePicker like isthere?, if it's not then click next month button
     }
 
-    public void selectDepartDate(String departureDate){
+    public By selectDepartDate(String departureDate){
         var dDate =  By.xpath(String.format("//div[@id='div-%s']", departureDate));
         driver.findElement(dDate);
         // user can give any date, we need to convert it in this format 2025-6-29, i.e., YYYY-MM-DD, remove one zero in the month
+        return dDate;
     }
 
     public void returnMonth(String returnMonthYear){
@@ -100,9 +101,10 @@ public class HomePageFlightsObjects {
         //departMonthYear value should be 'August 2025', pick this from the departureDate, assert it in datePicker like isthere?, if it's not then click next month button
     }
 
-    public void selectReturnDate(String returnDate){
+    public By selectReturnDate(String returnDate){
         var rDate = By.xpath(String.format("//div[@id='div-%s']", returnDate));
         driver.findElement(rDate);
+        return rDate;
     }
 
     /*
