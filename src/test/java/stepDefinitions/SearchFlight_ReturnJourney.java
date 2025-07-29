@@ -35,12 +35,12 @@ public class SearchFlight_ReturnJourney {
     }
 
     @When("User enters {string} city")
-    public void entersFromCity(String arg0) throws InterruptedException {
+    public void entersFromCity(String arg0) {
         homePageFlights.fromCity();
     }
 
     @When("Enters {string} city")
-    public void entersToCity(String arg0) throws InterruptedException {
+    public void entersToCity(String arg0) {
         homePageFlights.toCity();
     }
 

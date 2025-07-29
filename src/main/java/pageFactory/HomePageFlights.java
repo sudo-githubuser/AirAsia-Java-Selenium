@@ -73,7 +73,7 @@ public class HomePageFlights {
         } else {System.out.println("Journey type is already selected as 'Return Journey'");}
     }
 
-    public void fromCity() throws InterruptedException {
+    public void fromCity() {
         // To delete the pre-populated value
         homePageFlightsObjects.getOriginCity().sendKeys(Keys.CONTROL + "a");
         homePageFlightsObjects.getOriginCity().sendKeys(Keys.DELETE);
@@ -83,14 +83,19 @@ public class HomePageFlights {
         homePageFlightsObjects.getFirstCityFromOriginCityDropdown().click();
     }
 
-    public void toCity() throws InterruptedException {
+    public void toCity() {
         homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
         wait.until(ExpectedConditions.elementToBeClickable(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
         homePageFlightsObjects.getFirstCityFromDestinationCityDropdown().click();
     }
 
     public void openDatePicker(){
-        homePageFlightsObjects.getDepartDateField().click();
+        if(homePageFlightsObjects.getDatePicker().isDisplayed()){
+            homePageFlightsObjects.getDatePickerResetBtn().click();
+        } else {
+            homePageFlightsObjects.getDepartDateField().click();
+            homePageFlightsObjects.getDatePickerResetBtn().click();
+        }
     }
 
     public void departDate(){

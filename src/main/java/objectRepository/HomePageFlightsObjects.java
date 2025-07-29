@@ -75,6 +75,10 @@ public class HomePageFlightsObjects {
     private WebElement departDateField; // Onclick date picker will be displayed, before clicking see whether date picker is displayed by using the below locator
 
     @Getter
+    @FindBy(xpath = "//a[normalize-space()='Reset']")
+    private WebElement datePickerResetBtn;
+
+    @Getter
     @FindBy(css = "#calenderbody")
     private WebElement datePicker; // use for assertion. To assert, date picker is displayed, if this returns true then do not click on departDateField locator
 
