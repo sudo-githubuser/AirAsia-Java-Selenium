@@ -5,10 +5,10 @@ import managers.FileReaderManager;
 import objectRepository.HomePageFlightsObjects;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.SeleniumActions;
+import utility.WaitUtils;
 
 import java.time.Duration;
 
@@ -83,9 +83,7 @@ public class HomePageFlights {
 
     public void toCity() {
         homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
-        wait.until(ExpectedConditions.elementToBeClickable(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
-        wait.until(ExpectedConditions.visibilityOf(homePageFlightsObjects.getFirstCityFromDestinationCityDropdown()));
-        homePageFlightsObjects.getFirstCityFromDestinationCityDropdown().click();
+        WaitUtils.clickAfterWaitBy(driver, HomePageFlightsObjects.getFirstCityFromDestinationDropdown());
     }
 
     public void openDatePicker(){
@@ -98,13 +96,13 @@ public class HomePageFlights {
     }
 
     public void departDate(){
-        By departureDateLocator = homePageFlightsObjects.selectDepartDate("2025-8-10");
+        By departureDateLocator = homePageFlightsObjects.selectDepartDate("2025-7-10");
         WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(departureDateLocator));
         dateElement.click();
     }
 
     public void returnDate(){
-        By returnDateLocator = homePageFlightsObjects.selectReturnDate("2025-8-14");
+        By returnDateLocator = homePageFlightsObjects.selectReturnDate("2025-7-14");
         WebElement dateElement = wait.until(ExpectedConditions.elementToBeClickable(returnDateLocator));
         dateElement.click();
     }
@@ -123,7 +121,7 @@ public class HomePageFlights {
     }
 
     public void passengerCount(){
-        homePageFlightsObjects.adjustPassengerCount(driver, "Adult", 4);
+        homePageFlightsObjects.adjustPassengerCount(driver, "adult", 4);
     }
 
     public void searchFlight(){

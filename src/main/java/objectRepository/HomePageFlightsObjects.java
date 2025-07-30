@@ -57,14 +57,16 @@ public class HomePageFlightsObjects {
     @FindBy(css = "#home_flyingfrom")
     private WebElement destinationCity; //click and send values
 
-    @Getter
-    @FindBy(xpath = "//div[contains(@class, 'Dropdown__OptionsContainer')]/ul/li[1]") //put ExplicitWait/fluent wait and use
-    private WebElement firstCityFromDestinationCityDropdown; //perform click
-    // if we want to use .sendKeys(Keys.ARROW_DOWN + Keys.ENTER) as an alternative, after sending values only we will do that, this locator not req.
+//    @Getter
+//    @FindBy(xpath = "//div[contains(@class, 'Dropdown__OptionsContainer')]/ul/li[1]") //put ExplicitWait/fluent wait and use
+//    private WebElement firstCityFromDestinationCityDropdown; //perform click
     /*
      can be improved further based on sent values in destination city.
      After selecting city from dropdown, perform getText and display the same.
      */
+    public static By getFirstCityFromDestinationDropdown() {
+        return By.xpath("//div[contains(@class, 'Dropdown__OptionsContainer')]/ul/li[1]");
+    }
 
     @Getter
     @FindBy(xpath = "//div[contains(@class, 'Placepicker__IconWrapperInner')]")
