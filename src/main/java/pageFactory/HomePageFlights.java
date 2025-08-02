@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utility.SeleniumActions;
 import utility.WaitUtils;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class HomePageFlights {
@@ -83,7 +84,15 @@ public class HomePageFlights {
 
     public void toCity() {
         homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
-        WaitUtils.clickAfterWaitBy(driver, HomePageFlightsObjects.getFirstCityFromDestinationDropdown());
+        try{
+            WaitUtils.clickAfterWaitBy(driver, HomePageFlightsObjects.getFirstCityFromDestinationDropdown());
+        } catch (StaleElementReferenceException e){
+            homePageFlightsObjects.getDestinationCity().sendKeys(Keys.CONTROL + "a");
+            homePageFlightsObjects.getDestinationCity().sendKeys(Keys.DELETE);
+            homePageFlightsObjects.getDestinationCity().sendKeys("Bangkok");
+            driver.findElement(HomePageFlightsObjects.getFirstCityFromDestinationDropdown()).click();
+        }
+
     }
 
     public void openDatePicker(){

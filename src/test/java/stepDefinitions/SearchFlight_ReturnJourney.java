@@ -8,7 +8,7 @@ import objectRepository.HomePageFlightsObjects;
 import pageFactory.HomePageFlights;
 import testContext.TestContext;
 
-import java.awt.*;
+import java.io.IOException;
 
 public class SearchFlight_ReturnJourney {
 
@@ -16,10 +16,10 @@ public class SearchFlight_ReturnJourney {
     HomePageFlights homePageFlights;
     HomePageFlightsObjects homePageFlightsObjects;
 
-    public SearchFlight_ReturnJourney(TestContext context){
-        testContext = context;
-        homePageFlights = testContext.getPageObjectManager().getHomePageFlights();
-        homePageFlightsObjects = testContext.getPageObjectManager().getHomePageFlightsObjects();
+    public SearchFlight_ReturnJourney(){
+        this.testContext = new TestContext();
+        this.homePageFlights = testContext.getPageObjectManager().getHomePageFlights();
+        this.homePageFlightsObjects = testContext.getPageObjectManager().getHomePageFlightsObjects();
     }
 
     @Given("User visits Air Asia website")
